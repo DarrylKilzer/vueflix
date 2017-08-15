@@ -1,28 +1,39 @@
 <template>
   <div class="drawFlix">
     <div v-for="movie in this.movies">
-      <h1 @click=>{{movie.show_title}}</h1>
+      <h1 @click='info(movie)'>{{movie.show_title}}</h1>
+      <div v-if='showInfo === true'>
+        <br>
+        <h1>Information</h1>
+        <h2>{{this.movie.show_title}}</h2>
+        <img :src='this.movie.poster'>
+      </div>
     </div>
-      <h1>{{movie.show_title}}</h1>      
-
   </div>
 </template>
 
 
 <script>
-export default {
-  name: 'drawFlix',
-  props: ["movies"],
-  data(){
-    return { 
-      movie: {}
-    }
+  export default {
+    name: 'drawFlix',
+    props: ["movies", "showInfo"],
+    data() {
+      return {
+        movie: {
+          show_title: ""
+        }
+      }
 
-  },
-  computed:{},
-  methods:{},
-  components:{}
-}
+    },
+    computed: {},
+    methods: {
+      info(movie) {
+        this.movie = movie
+      }
+    },
+    components: {}
+  }
+
 </script>
 
 

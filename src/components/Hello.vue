@@ -9,7 +9,7 @@
     <input type="radio" id="title" value="title" v-model="category">
     <label for="title">Title</label>
     <button @click="search()">search</button>
-    <drawFlix :movies='this.results'></drawFlix>
+    <drawFlix :movies='this.results' :showInfo='true'></drawFlix>
     <drawFlix :movies='this.favorites'></drawFlix>
   </div>
 </template>

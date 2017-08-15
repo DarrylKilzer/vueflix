@@ -7,7 +7,7 @@ let store = {
 
     return new Promise(function(resolve, reject){
         $.get(url)
-          .then(data=>{resolve(data)})
+          .then(data =>{resolve(data)})
           .catch(error => {reject(error)});
     })
   }
