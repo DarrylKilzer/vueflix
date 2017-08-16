@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <h1><img src="./assets/logo.png">ue-Flix</h1>
     <router-view></router-view>
   </div>
 </template>
