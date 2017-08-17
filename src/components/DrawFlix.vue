@@ -1,21 +1,23 @@
 <template>
   <div class="drawFlix">
-    <div v-if='showInfo === true'>
-      <h1>Information</h1>
-      <h2>{{movie.show_title}}</h2>
-      <img :src='this.movie.poster'>
-      <div>
-        <button @click='addFav(movie)'>Add to Favs</button>
-      </div>
+    <div v-if="showFavorites == true">
+      <h1>Favorites</h1>
       <div v-for="movie in this.movies">
-        <h1 @click='info(movie)'>{{movie.show_title}}</h1>
+        <h3>{{movie.show_title}}</h3>
+        <button @click='removeFavorite(movie)'>Remove Fav</button>
       </div>
     </div>
     <div v-else>
-      <h1>Favs</h1>
+      <h1>Selected Movie</h1>
+      <h3>{{selectedMovie.show_title}}</h3>
+      <p>{{selectedMovie.summary}}</p>
+    <div v-if="selectedMovie.show_title != null">
+      <button @click='addFavorite(selectedMovie)'>Add Fav</button>
+    </div>
+      <hr>
+      <h1>Results</h1>
       <div v-for="movie in this.movies">
-        <h2>{{movie.show_title}}</h2>
-        <button @click='removeFav(movie)'>Remove from Favs</button>
+        <h3 @click='selectMovie(movie)'>{{movie.show_title}}</h3>
       </div>
     </div>
   </div>
@@ -26,21 +28,23 @@
   import { store } from '../store'
   export default {
     name: 'drawFlix',
-    props: ["movies", "showInfo"],
+    props: ["movies", "showFavorites"],
     data() {
       return {
-        movie: {}
+        selectedMovie: {}
       }
 
     },
     computed: {},
     methods: {
-      info(movie) {
-        this.movie = movie
-        //hideButton = false
+      selectMovie(movie) {
+        this.selectedMovie = movie
       },
-      addFav(movie) {
-        store.addToFavs(movie)
+      addFavorite(movie) {
+        store.addToFavorites(movie)
+      },
+      removeFavorite(movie) {
+        store.removeFromFavorites(movie)
       }
     },
     components: {}

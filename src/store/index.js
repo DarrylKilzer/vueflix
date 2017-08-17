@@ -1,9 +1,8 @@
-import $ from 'jQuery'
-
+import $ from 'jquery'
 
 var state = {
   results: [],
-  favs: []
+  favorites: []
 }
 
 let store = {
@@ -18,8 +17,12 @@ let store = {
           .catch(error => {reject(error)});
     })
   },
-  addToFavs(movie){
-    state.favs.push(movie)
+  addToFavorites(movie){
+    state.favorites.push(movie)
+  },
+  removeFromFavorites(movie){
+    var index = state.favorites.indexOf(movie)
+    state.favorites.splice(index, 1)
   }
 }
 

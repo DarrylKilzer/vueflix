@@ -1,4 +1,4 @@
-# movies
+# vue-flix
 
 > A Vue.js project
 

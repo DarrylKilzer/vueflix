@@ -14,10 +14,10 @@
         </form>
         <div class="row">
           <div class="col-xs-6">
-            <drawFlix :movies='this.results' :showInfo='true'></drawFlix>
+            <DrawFlix :movies='this.results' :showFavorites='false'></DrawFlix>
           </div>
           <div class="col-xs-6">
-            <drawFlix :movies='this.favorites' :showInfo='false'></drawFlix>
+            <DrawFlix :movies='this.favorites' :showFavorites='true'></DrawFlix>
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
 
 <script>
   import { store } from '../store'
-  import drawFlix from './DrawFlix'
+  import DrawFlix from './DrawFlix'
   export default {
     name: 'main',
     data() {
@@ -48,7 +48,7 @@
       }
     },
     components: {
-      drawFlix
+      DrawFlix
     }
   }
 
@@ -69,8 +69,3 @@
     display: inline-block;
     margin: 0 10px;
   }
-
-  a {
-    color: #42b983;
-  }
-</style>

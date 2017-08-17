@@ -1,32 +1,24 @@
 <template>
   <div id="app">
     <h1><img src="./assets/logo.png">ue-Flix</h1>
-    <router-view></router-view>
+    <Main></Main>
   </div>
 </template>
 
 <script>
+import Main from './components/Main'
+import DrawFlix from './components/DrawFlix'
+
 export default {
   name: 'app',
-  data(){
-    return {
-      here: 'is',
-      some: 'stuff'
-    }
-  },
-  mounted(){
-    console.log('Justin was here', this.justinsFunction)
-  },
-  computed: {
-    justinsFunction(){
-      return '...or was he?'
-    }
+  components: {
+    Main,
+    DrawFlix
   }
 }
 </script>
 
 <style>
-
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
