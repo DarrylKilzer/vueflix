@@ -1,21 +1,20 @@
 <template>
   <div class="drawFlix">
     <div v-if='showInfo === true'>
+      <h1>Information</h1>
+      <h2>{{movie.show_title}}</h2>
+      <img :src='this.movie.poster'>
+      <div>
+        <button @click='addFav(movie)'>Add to Favs</button>
+      </div>
       <div v-for="movie in this.movies">
         <h1 @click='info(movie)'>{{movie.show_title}}</h1>
       </div>
-      <br>
-      <h1>Information</h1>
-      <h2>{{this.movie.show_title}}</h2>
-      <img :src='this.movie.poster'>
-      <button @click='addFav(movie)'>Add to Favs</button>
     </div>
     <div v-else>
-      <br>
       <h1>Favs</h1>
       <div v-for="movie in this.movies">
-        <h2>{{this.movie.show_title}}</h2>
-        <img :src='this.movie.poster'>
+        <h2>{{movie.show_title}}</h2>
         <button @click='removeFav(movie)'>Remove from Favs</button>
       </div>
     </div>
@@ -27,7 +26,7 @@
   import { store } from '../store'
   export default {
     name: 'drawFlix',
-    props: ["movies", "showInfo", "showFavs"],
+    props: ["movies", "showInfo"],
     data() {
       return {
         movie: {}
@@ -38,9 +37,10 @@
     methods: {
       info(movie) {
         this.movie = movie
+        //hideButton = false
       },
       addFav(movie) {
-        store
+        store.addToFavs(movie)
       }
     },
     components: {}
